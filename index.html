@@ -54,6 +54,10 @@ body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;bac
   body{overflow:hidden}
   #app{flex-direction:column}
   .sidebar{width:100%;min-width:0;height:100vh;border-right:none}
+  /* 手机端：隐藏只读分享版用不到的编辑按钮，把空间全部让给笔记列表 */
+  .btnrow,.btn.full,.tip{display:none}
+  .list-wrap{flex:1;margin:10px 0 0;overflow-y:auto}
+  .note-item{padding:12px 14px;font-size:14px}
   .main,.workspace{flex-direction:column}
   .editor{flex:1;min-height:0}
   /* toggle views */
