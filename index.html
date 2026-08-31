@@ -7,60 +7,63 @@
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;height:100%}
-body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;background:#f5f7fb;color:#17202a;font-size:14px;overflow:hidden}
-#app{display:flex;height:100vh}
-.sash{width:6px;background:#d9dee7;flex:none}
-.sidebar{width:270px;min-width:240px;background:#f6f7f9;padding:12px;display:flex;flex-direction:column;flex:none}
-.sidebar .brand{font-size:17px;font-weight:bold;color:#1d2733}
-.sidebar .hint{font-size:12px;color:#6a7483;margin:2px 0 10px}
-.sidebar input[type=text]{width:100%;padding:6px 8px;border:1px solid #d5dae3;border-radius:4px;font-family:inherit;font-size:13px}
-.list-wrap{flex:1;margin:10px 0;overflow-y:auto;background:#f6f7f9}
-.note-item{padding:8px 10px;border-radius:4px;margin-bottom:2px;cursor:pointer;font-size:13px;color:#1d2733}
+body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;background:#f5f7fb;color:#17202a;font-size:14px}
+#app{display:flex;height:100vh;min-height:0}
+.sidebar{width:300px;min-width:240px;background:#f6f7f9;padding:14px;display:flex;flex-direction:column;flex:none;border-right:1px solid #e3e7ee}
+.sidebar .brand{font-size:18px;font-weight:bold;color:#1d2733}
+.sidebar .hint{font-size:12px;color:#6a7483;margin:2px 0 12px}
+.sidebar input[type=text]{width:100%;padding:8px 10px;border:1px solid #d5dae3;border-radius:6px;font-family:inherit;font-size:14px}
+.list-wrap{flex:1;margin:12px 0;overflow-y:auto;background:#f6f7f9}
+.note-item{padding:11px 12px;border-radius:6px;margin-bottom:3px;cursor:pointer;font-size:14px;color:#1d2733;background:#ffffff;border:1px solid #e6e9ef}
 .note-item:hover{background:#eceae6}
-.note-item.active{background:#2d6cdf;color:#ffffff}
-.btnrow{display:flex;gap:6px;margin-bottom:8px}
-.btn{flex:1;padding:7px 0;border:1px solid #cfd6e0;border-radius:5px;background:#ffffff;cursor:pointer;font-family:inherit;font-size:13px;color:#1d2733}
+.note-item.active{background:#2d6cdf;color:#ffffff;border-color:#2d6cdf}
+.note-item .d{font-size:11px;opacity:.65;display:block}
+.btnrow{display:flex;gap:6px;margin:0 0 8px}
+.btn{flex:1;padding:8px 0;border:1px solid #cfd6e0;border-radius:6px;background:#ffffff;cursor:pointer;font-family:inherit;font-size:13px;color:#1d2733}
 .btn:hover{background:#f0f3f8}
 .btn.full{width:100%;margin-top:6px}
 .tip{font-size:12px;color:#6a7483;line-height:1.6;margin-top:12px}
 .main{flex:1;display:flex;min-width:0}
-.workspace{flex:1;display:flex;min-width:0}
-.editor{flex:1;min-width:650px;background:#ffffff;padding:12px;display:flex;flex-direction:column;min-width:0}
-.meta{display:flex;gap:10px;margin-bottom:12px}
+.workspace{flex:1;display:flex;min-width:0;flex-direction:column}
+.editor{flex:1;background:#ffffff;padding:14px;display:flex;flex-direction:column;min-width:0;min-height:0}
+.meta{display:flex;gap:10px;margin-bottom:14px}
 .meta label{font-size:12px;color:#4b5565;display:block;margin-bottom:3px}
-.meta input{width:100%;padding:6px 8px;border:1px solid #dce1ea;border-radius:4px;font-family:inherit;font-size:13px}
-.meta .f{flex:1}
-.meta .f.date{flex:0 0 130px}.meta .f.title{flex:2}.meta .f.topics{flex:1}
-.toolbar{display:flex;gap:8px;margin-bottom:10px}
-.tabs{display:flex;border-bottom:2px solid #e6e9ef;margin-top:4px}
-.tab{padding:9px 18px;font-size:13px;font-weight:bold;color:#5b6b82;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px}
+.meta input{width:100%;padding:7px 9px;border:1px solid #dce1ea;border-radius:6px;font-family:inherit;font-size:14px}
+.meta .f{flex:1}.meta .f.date{flex:0 0 130px}.meta .f.title{flex:2}.meta .f.topics{flex:1}
+.toolbar{display:flex;gap:8px;margin-bottom:12px}
+.tabs{display:flex;border-bottom:2px solid #e6e9ef;margin-top:2px;overflow-x:auto}
+.tab{padding:10px 16px;font-size:14px;font-weight:bold;color:#5b6b82;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap}
 .tab.active{color:#175cd3;border-bottom-color:#175cd3}
-.panelwrap{display:none;flex:1;flex-direction:column;min-height:0}
+.panelwrap{flex:1;display:none;flex-direction:column;min-height:0}
 .panelwrap.active{display:flex}
-.textholder{flex:1;overflow-y:auto;background:#fbfcfe;border:1px solid #dce1ea;border-radius:0 0 4px 4px;padding:12px;font-size:13.5px;color:#17202a;line-height:1.75;white-space:pre-wrap;word-break:break-word}
-.textholder.mono{font-family:'Cascadia Code',Consolas,Menlo,monospace;font-size:12.5px;background:#101826;color:#d8e2f2;white-space:pre;overflow:auto}
-.panel img.thumb{max-width:100%;height:auto;display:block;margin:10px auto;border:1px solid #e6e9ef;cursor:zoom-in;border-radius:4px}
+.textholder{flex:1;overflow-y:auto;background:#fbfcfe;border:1px solid #dce1ea;border-radius:0 0 6px 6px;padding:14px;font-size:14.5px;color:#17202a;line-height:1.8;white-space:pre-wrap;word-break:break-word}
+.textholder.mono{font-family:'Cascadia Code',Consolas,Menlo,monospace;font-size:13px;background:#101826;color:#d8e2f2;white-space:pre;overflow:auto}
+.panel img.thumb{max-width:100%;height:auto;display:block;margin:10px auto;border:1px solid #e6e9ef;cursor:zoom-in;border-radius:6px}
 .kw{color:#7dd3fc}.st{color:#86efac}.cm{color:#8b9bb3}.pp{color:#fbbf24}.nb{color:#fca5a5}.fn{color:#c4b5fd}
-.codebox{background:#eef4ff;padding:7px 10px;border-radius:4px 4px 0 0;display:flex;justify-content:space-between;align-items:center}
+.codebox{background:#eef4ff;padding:7px 10px;border-radius:6px 6px 0 0;display:flex;justify-content:space-between;align-items:center}
 .codebox .t{font-size:13px;font-weight:bold;color:#173b72}.codebox .s{font-size:12px;color:#5b6b82}
-.output{width:330px;min-width:260px;background:#ffffff;padding:12px;display:flex;flex-direction:column;flex:none}
-.output .ob{font-size:15px;font-weight:bold;color:#1d2733}.output .oh{font-size:12px;color:#6a7483;margin:2px 0 8px}
-.outbox{flex:1;overflow-y:auto;background:#fbfcfe;border:1px solid #dce1ea;border-radius:4px;padding:12px;font-family:Consolas,monospace;font-size:12px;color:#17202a;white-space:pre-wrap}
-.statusbar{background:#eef1f5;color:#415065;padding:4px 10px;font-size:12px;border-top:1px solid #e0e4ea}
-#viewer{position:fixed;inset:0;background:rgba(17,24,39,.92);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
+.statusbar{background:#eef1f5;color:#415065;padding:5px 10px;font-size:12px;border-top:1px solid #e0e4ea}
+#viewer{position:fixed;inset:0;background:rgba(17,24,39,.93);display:none;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
 #viewer.show{display:flex}
-#viewer img{max-width:94vw;max-height:86vh;background:#111827;border-radius:4px}
-#viewer .vfoot{color:#e5e7eb;padding:10px;display:flex;justify-content:space-between;width:94vw}
-#viewer .vfoot button{background:#eef1f5;border:none;padding:6px 16px;border-radius:5px;cursor:pointer}
-/* responsive for mobile */
-@media (max-width:800px){
-  #app{flex-direction:column;height:auto;min-height:100vh}
-  .sidebar{width:100%;min-width:0;max-height:42vh}
-  .main{flex-direction:column}
-  .workspace{flex-direction:column}
-  .editor{min-width:0}
-  .output{width:100%;min-width:0;display:none}
-  .sash{display:none}
+#viewer img{max-width:96vw;max-height:84vh;background:#111827;border-radius:4px}
+#viewer .vfoot{color:#e5e7eb;padding:10px;display:flex;justify-content:space-between;width:96vw}
+#viewer .vfoot button{background:#eef1f5;border:none;padding:6px 16px;border-radius:6px;cursor:pointer}
+/* ---- mobile: list -> detail ---- */
+.mobile-only{display:none}
+@media (max-width:860px){
+  body{overflow:hidden}
+  #app{flex-direction:column}
+  .sidebar{width:100%;min-width:0;height:100vh;border-right:none}
+  .main,.workspace{flex-direction:column}
+  .editor{flex:1;min-height:0}
+  /* toggle views */
+  body.mview-list .sidebar{display:flex}
+  body.mview-list .main{display:none}
+  body.mview-detail .sidebar{display:none}
+  body.mview-detail .main{display:flex}
+  .mobile-only{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#175cd3;color:#fff;font-size:15px;font-weight:bold}
+  .mobile-only .back{background:rgba(255,255,255,.18);border:none;color:#fff;padding:7px 14px;border-radius:8px;font-size:14px;cursor:pointer}
+  .mobile-only .t{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 }
 </style>
 </head>
@@ -69,7 +72,7 @@ body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;bac
   <div class="sidebar">
     <div class="brand">每日 C 笔记</div>
     <div class="hint">按日期、标题、知识点或代码搜索</div>
-    <input id="search" type="text" placeholder="搜索...">
+    <input id="search" type="text" placeholder="搜索笔记...">
     <div class="list-wrap" id="list"></div>
     <div class="btnrow">
       <button class="btn" onclick="alert('分享版为只读，本机应用可使用“新建今天”')">新建今天</button>
@@ -82,6 +85,7 @@ body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;bac
   </div>
   <div class="main">
     <div class="workspace">
+      <div class="mobile-only"><button class="back" onclick="showList()">‹ 列表</button><span class="t" id="m-detail-title">笔记</span></div>
       <div class="editor">
         <div class="meta">
           <div class="f date"><label>日期</label><input id="f-date" readonly></div>
@@ -104,12 +108,7 @@ body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;bac
         <div class="panelwrap textholder" id="p-reflection"></div>
         <div class="panelwrap textholder mono" id="p-input"></div>
         <div class="codebox"><span class="t">C 代码显示框</span><span class="s">固定显示 · 语法高亮 · 可编译运行</span></div>
-        <div class="panelwrap mono" id="p-code" style="min-height:180px;max-height:260px"></div>
-      </div>
-      <div class="output">
-        <div class="ob">运行结果</div>
-        <div class="oh">编译运行后的输出会显示在这里</div>
-        <div class="outbox">（分享只读网页：编译运行请在本地 CNotes 应用中执行）</div>
+        <div class="panelwrap mono" id="p-code" style="min-height:170px;max-height:250px"></div>
       </div>
     </div>
   </div>
@@ -122,14 +121,18 @@ body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;bac
 const DATA = JSON.parse(document.getElementById('notes-data').textContent);
 const listEl = document.getElementById('list');
 const searchEl = document.getElementById('search');
-let currentId = null, filtered = DATA.slice();
+let currentId=null, filtered=DATA.slice();
 function rlabel(n){let l=(n.date||'')+'  '+(n.title||'');if(n.topics&&n.topics.trim())l+='  ['+n.topics.trim()+']';return l;}
 function renderList(){
   listEl.innerHTML='';
   filtered.forEach(function(n){
     const div=document.createElement('div');
     div.className='note-item'+(n.id===currentId?' active':'');
-    div.textContent=rlabel(n); div.dataset.id=n.id;
+    const dd=document.createElement('span');dd.className='d';dd.textContent=(n.date||'')+' · '+(n.topics||'');
+    div.appendChild(document.createTextNode((n.date||'')+'  '+(n.title||'')));
+    div.appendChild(document.createElement('br'));
+    div.appendChild(dd);
+    div.dataset.id=n.id;
     div.addEventListener('click',function(){selectNote(n.id);});
     listEl.appendChild(div);
   });
@@ -169,13 +172,17 @@ function selectNote(id){
   document.getElementById('f-date').value=n.date||'';
   document.getElementById('f-title').value=n.title||'';
   document.getElementById('f-topics').value=n.topics||'';
+  document.getElementById('m-detail-title').textContent=n.title||'';
   document.getElementById('p-summary').textContent=n.summary||'';
   document.getElementById('p-codex').textContent=n.codex||'';
   document.getElementById('p-reflection').textContent=n.reflection||'';
   document.getElementById('p-input').textContent='';
   renderCode(n.code||''); renderImages(n.imgs||[]);
   document.getElementById('status').textContent='共 '+DATA.length+' 篇笔记 · 当前：'+(n.title||'');
-  renderList(); switchTab('tab-summary');
+  renderList();
+  // On mobile, switch to detail view
+  if(window.innerWidth<=860){ document.body.className='mview-detail'; }
+  switchTab('tab-summary');
 }
 function switchTab(id){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
@@ -184,13 +191,23 @@ function switchTab(id){
   const map={'tab-summary':'p-summary','tab-codex':'p-codex','tab-reflection':'p-reflection','tab-input':'p-input'};
   document.getElementById(map[id]).classList.add('active');
 }
+function showList(){ document.body.className='mview-list'; }
 searchEl.addEventListener('input',function(){
   const q=searchEl.value.trim().toLowerCase();
   filtered=q?DATA.filter(function(n){return (n.date+' '+n.title+' '+n.topics+' '+n.summary+' '+n.codex+' '+n.code+' '+n.reflection).toLowerCase().indexOf(q)>=0;}):DATA.slice();
   renderList();
 });
 document.getElementById('viewer').addEventListener('click',closeViewer);
-document.addEventListener('DOMContentLoaded',function(){ if(DATA.length)selectNote(DATA[0].id); else document.getElementById('status').textContent='暂无笔记';});
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.innerWidth<=860){ document.body.className='mview-list'; }
+  fallbackIfMobile();
+  if(DATA.length){ renderList(); } else { document.getElementById('status').textContent='暂无笔记'; }
+});
+window.addEventListener('resize',fallbackIfMobile);
+function fallbackIfMobile(){
+  // on desktop always show main; ensure not stuck in list view
+  if(window.innerWidth>860 && document.body.className.indexOf('mview')>=0){ document.body.className='mview-detail'; }
+}
 
 </script>
 </body>
