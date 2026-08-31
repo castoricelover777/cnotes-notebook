@@ -102,13 +102,13 @@ body{font-family:'Microsoft YaHei UI','Microsoft YaHei',system-ui,sans-serif;bac
           <button class="btn" style="flex:0 0 auto;padding:7px 16px" onclick="alert('添加图片请在本机应用使用')">添加图片</button>
         </div>
         <div class="tabs">
-          <div class="tab active" id="tab-summary" onclick="switchTab('tab-summary')">课堂笔记</div>
-          <div class="tab" id="tab-codex" onclick="switchTab('tab-codex')">翁凯课总结</div>
+          <div class="tab" id="tab-summary" onclick="switchTab('tab-summary')">课堂笔记</div>
+          <div class="tab active" id="tab-codex" onclick="switchTab('tab-codex')">翁凯课总结</div>
           <div class="tab" id="tab-reflection" onclick="switchTab('tab-reflection')">复盘</div>
           <div class="tab" id="tab-input" onclick="switchTab('tab-input')">程序输入</div>
         </div>
-        <div class="panelwrap active textholder" id="p-summary"></div>
-        <div class="panelwrap textholder" id="p-codex"></div>
+        <div class="panelwrap textholder" id="p-summary"></div>
+        <div class="panelwrap active textholder" id="p-codex"></div>
         <div class="panelwrap textholder" id="p-reflection"></div>
         <div class="panelwrap textholder mono" id="p-input"></div>
         <div class="codebox"><span class="t">C 代码显示框</span><span class="s">固定显示 · 语法高亮 · 可编译运行</span></div>
@@ -186,7 +186,7 @@ function selectNote(id){
   renderList();
   // On mobile, switch to detail view
   if(window.innerWidth<=860){ document.body.className='mview-detail'; }
-  switchTab('tab-summary');
+  switchTab('tab-codex');
 }
 function switchTab(id){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
